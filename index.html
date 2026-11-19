@@ -167,7 +167,7 @@
     t.textContent = msg;
     t.hidden = false;
     clearTimeout(aviso.id);
-    aviso.id = setTimeout(function () { t.hidden = true; }, 3200);
+    aviso.id = setTimeout(function () { t.hidden = true; }, 9000);
   }
 
   function ok(res) {
@@ -179,7 +179,7 @@
     return function (ev) {
       Promise.resolve().then(function () { return fn(ev); }).catch(function (e) {
         console.warn(e);
-        aviso(e && e.friendly ? e.friendly : 'Não deu certo agora. Tente de novo em instantes.');
+        aviso(e && e.friendly ? e.friendly : 'Não deu certo agora. Tente de novo em instantes.' + (e && e.message ? ' Motivo: ' + e.message : ''));
       });
     };
   }
@@ -229,7 +229,7 @@
         enviar.disabled = false;
         if (res.error) {
           var e = new Error(res.error.message);
-          e.friendly = modoCriar ? 'Não consegui criar a conta. Confira o e-mail e use 6 ou mais caracteres na senha.' : 'E-mail ou senha não conferem. Confira e tente de novo.';
+          e.friendly = (modoCriar ? 'Não consegui criar a conta. Confira o e-mail e use 6 ou mais caracteres na senha.' : 'Não consegui entrar. Confira e-mail e senha.') + ' Motivo: ' + res.error.message;
           throw e;
         }
         if (modoCriar && !res.data.session) {
