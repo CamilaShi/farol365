@@ -1,4 +1,4 @@
 window.CFG = {
   url: 'https://SEU-PROJETO.supabase.co',
-  anon: 'sb_publishable_xtXzVUJAG6-1Azd_jilR7Q_HWXyY-15'
+  anon: 'https://akjsdeznijozmakmdiqm.supabase.co/rest/v1/5'
 };
